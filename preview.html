@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Person List</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    /* Add some basic styling for the dropdown */
+    #person-list {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 0;
+      list-style: none;
+    }
+    #person-list li {
+      padding: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form class="search-container">
+    <input type="text" id="search-bar" placeholder="Select the Person">
+    <ul id="person-list"></ul>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      var personList = ["Amit","Akash","Akahay","Bob","Bunny","Charlie", "David", "Eve"];
+      var $searchBar = $("#search-bar");
+      var $personList = $("#person-list");
+
+      // Show list on click
+      $searchBar.click(function(e) {
+        e.stopPropagation(); // Prevent the click from propagating to document
+
+        // Toggle the dropdown
+        $personList.toggle();
+      });
+
+      // Hide list when clicking outside the input box
+      $(document).click(function() {
+        $personList.hide();
+      });
+
+      // Populate the dropdown
+      function updateDropdown(filter) {
+        $personList.empty(); // Clear existing list items
+
+        personList.forEach(function(person) {
+          if (person.toLowerCase().includes(filter.toLowerCase())) {
+            var listItem = $("<li>" + person + "</li>");
+            listItem.click(function() {
+              $searchBar.val(person); // Set the input value
+              $personList.hide(); // Hide the dropdown
+            });
+            $personList.append(listItem);
+          }
+        });
+      }
+
+      // Filter list based on user input
+      $searchBar.on("input", function() {
+        var filterValue = $(this).val();
+        updateDropdown(filterValue);
+      });
+    });
+  </script>
+</body>
+</html>
