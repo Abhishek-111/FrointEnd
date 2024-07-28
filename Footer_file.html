@@ -21,13 +21,15 @@
 
 </body>
 <script>
+    // improved code quality using regular expression.
     function capitalizeFirstLetter(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        return str.replace(/^./, (match) => match.toUpperCase());
     }
 
     const inputString = "aman";
     const capitalizedString = capitalizeFirstLetter(inputString);
     console.log(capitalizedString); // Output: Aman
+
 
 </script>
 </html>
