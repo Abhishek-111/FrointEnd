@@ -20,4 +20,14 @@
 </footer>
 
 </body>
+<script>
+    // another approach
+    function capitalizeFirstLetter(str) {
+        return str.replace(/^./, (match) => match.toUpperCase());
+    }
+
+    const inputString = "aman";
+    const capitalizedString = capitalizeFirstLetter(inputString);
+    console.log(capitalizedString); // Output: Aman
+</script>
 </html>
