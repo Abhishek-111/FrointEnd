@@ -1,84 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Person List</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <style>
-    /* Add some basic styling for the dropdown */
-    #person-list {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      padding: 0;
-      list-style: none;
-    }
-    #person-list li {
-      padding: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        /* Add some basic styling for the dropdown */
+        #person-list {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 0;
+            list-style: none;
+        }
+
+            #person-list li {
+                padding: 5px;
+                cursor: pointer;
+            }
+    </style>
 </head>
 <body>
-  <form class="search-container">
-    <input type="text" id="search-bar" placeholder="Select the Person">
-    <ul id="person-list"></ul>
-  </form>
+    <form class="search-container">
+        <input type="text" id="search-bar" placeholder="Select the Person">
+        <ul id="person-list"></ul>
+    </form>
 
-  <script>
-    $(document).ready(function() {
-      var personList = ["Aman","Sumit","Pawan","Nimit Joshi","Nitish","Loha feat4"]
-      var $searchBar = $("#search-bar");
-        var $personList = $("#person-list");
+    <script>
+        $(document).ready(function () {
+            var personList = ["Aman", "Sumit", "Pawan", "Nimit Joshi", "Nitish", "Loha feat4"]
+            var $searchBar = $("#search-bar");
+            var $personList = $("#person-list");
 
-      // Show list on click
-      $searchBar.click(function(e) {
-        e.stopPropagation(); // Prevent the click from propagating to document
+            // Show list on click
+            $searchBar.click(function (e) {
+                e.stopPropagation(); // Prevent the click from propagating to document
 
-        // Toggle the dropdown
-        $personList.toggle();
-      });
-
-      // Hide list when clicking outside the input box
-      $(document).click(function() {
-        $personList.hide();
-      });
-
-      // Populate the dropdown
-      function updateDropdown(filter) {
-        $personList.empty(); // Clear existing list items
-
-        personList.forEach(function(person) {
-          if (person.toLowerCase().includes(filter.toLowerCase())) {
-            var listItem = $("<li>" + person + "</li>");
-            listItem.click(function() {
-              $searchBar.val(person); // Set the input value
-              $personList.hide(); // Hide the dropdown
+                // Toggle the dropdown
+                $personList.toggle();
             });
-            $personList.append(listItem);
-          }
-        });
-      }
 
-      // Filter list based on user input
-      $searchBar.on("input", function() {
-        var filterValue = $(this).val();
-        updateDropdown(filterValue);
-      });
-    });
-  </script>
+            // Hide list when clicking outside the input box
+            $(document).click(function () {
+                $personList.hide();
+            });
+
+            // Populate the dropdown
+            function updateDropdown(filter) {
+                $personList.empty(); // Clear existing list items
+
+                personList.forEach(function (person) {
+                    if (person.toLowerCase().includes(filter.toLowerCase())) {
+                        var listItem = $("<li>" + person + "</li>");
+                        listItem.click(function () {
+                            $searchBar.val(person); // Set the input value
+                            $personList.hide(); // Hide the dropdown
+                        });
+                        $personList.append(listItem);
+                    }
+                });
+            }
+
+            // Filter list based on user input
+            $searchBar.on("input", function () {
+                var filterValue = $(this).val();
+                updateDropdown(filterValue);
+            });
+        });
+    </script>
 </body>
 </html>
 
-new code11
-new code22
-new code33
-new code44
-
-new code1
-new code2
-new code3
-new code4
-
+test new change
+test1
+test2
+test3
